@@ -1,0 +1,19 @@
+{
+    "name": "smartedutech/litelle-framework-generator",
+    "description": "generator from database application based bootstrap 3 css",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Smartedutech\\LitelleFrameworkGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "limostr",
+            "email": "oussama.limam@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

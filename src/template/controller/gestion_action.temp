@@ -1,0 +1,5 @@
+public function gestion{Table}(){
+$Vue=new View();
+$Vue->setlayout("simplelayout");
+$Vue->generate();
+}

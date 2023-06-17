@@ -1,0 +1,226 @@
+<?php
+
+$_APP_CONF=array(
+    "APPNAME"=>"e-lab-reservation"
+);
+$_Config=array(
+    "modules"=>array(
+        "admin"=>array(
+            "name"=>"admin"
+            ,"Controller"=>array(
+ 
+//fin controller
+"roles"=>array(
+    "name"=>"roles",
+    "actions"=>array(
+        "editroles"=>array(
+            "Type"=>"simple"//"AJAX"
+            ,'Role'=>"edit"
+            ,"view"=>array(
+              "view"=>true
+              ,"layout"=>false
+              ,"pages"=>array(
+                    "edit"=>"editroles"
+                    ,"lister"=>"listerroles"
+                    //,"id"=>"idroles"
+                  )
+            )
+            ,"activity"=>"edit"
+            ,"form"=>"formroles"
+            ,"model"=>array(
+                "table"=>"roles"
+            )
+        ),
+
+        "listerroles"=>array(
+            "Type"=>"simple"//"AJAX"
+            ,'Role'=>"lister"
+            ,"view"=>array(
+                          "view"=>true
+                          ,"layout"=>false
+                          ,"pages"=>array(
+                                "edit"=>"editroles"
+                                ,"lister"=>"listerroles"
+                                ,"consulter"=>"consulterroles"
+                                ,"id"=>"idroles"
+                              )
+          )
+            ,"activity"=>"listerroles"
+            ,"form"=>false
+            ,"model"=>array(
+                    "table"=>"roles"
+                )
+
+        ),
+        "consulterroles"=>array(
+            "Type"=>"simple"//"AJAX"
+            ,'Role'=>"consulter"
+            ,"view"=>array(
+                          "view"=>true
+                          ,"layout"=>false
+                          ,"pages"=>array(
+                                "edit"=>"editroles"
+                                ,"lister"=>"listerroles"
+                                ,"id"=>"idroles"
+                              )
+          )
+            ,"activity"=>"consulterroles"
+            ,"form"=>false
+            ,"model"=>array(
+                    "table"=>"roles"
+                )
+
+        ),
+        "gestionroles"=>array(
+            "Type"=>"simple"//"AJAX"
+            ,'Role'=>"gestion"
+            ,"view"=>array(
+                    "view"=>true
+                    ,"layout"=>"layout"
+                    ,"pages"=>array(
+                      "edit"=>"editroles"
+                      ,"lister"=>"listerroles"
+                    )
+                )
+            ,"activity"=>"gestion"
+            ,"form"=>false
+            ,"model"=>array(
+                "table"=>"roles"
+            )
+
+        ),
+        "deleteroles"=>array(
+            "Type"=>"AJAX"//"AJAX"
+            ,'Role'=>"delete"
+            ,"view"=>array("view"=>false,"layout"=>false)
+            ,"activity"=>"delete"
+            ,"form"=>false
+            ,"model"=>array(
+                "table"=>"roles"
+            )
+        ),
+        "saveroles"=>array(
+            "Type"=>"AJAX"//"AJAX"
+            ,'Role'=>"save"
+            ,"view"=>array("view"=>false,"layout"=>false)
+            ,"activity"=>"save"
+            ,"form"=>false
+            ,"model"=>array(
+                "table"=>"roles"
+            )
+        ),
+    ),
+),
+
+//controller
+"personnes"=>array(
+        "name"=>"personnes",
+        "actions"=>array(
+            "editpersonnes"=>array(
+                "Type"=>"simple"//"AJAX"
+                ,'Role'=>"edit"
+                ,"view"=>array(
+                  "view"=>true
+                  ,"layout"=>false
+                  ,"pages"=>array(
+                        "edit"=>"editpersonnes"
+                        ,"lister"=>"listerpersonnes"
+                        //,"id"=>"idpersonnes"
+                      )
+                )
+                ,"activity"=>"edit"
+                ,"form"=>"formpersonnes"
+                ,"model"=>array(
+                    "table"=>"personnes"
+                )
+            ),
+
+            "listerpersonnes"=>array(
+                "Type"=>"simple"//"AJAX"
+                ,'Role'=>"lister"
+                ,"view"=>array(
+                              "view"=>true
+                              ,"layout"=>false
+                              ,"pages"=>array(
+                                    "edit"=>"editpersonnes"
+                                    ,"lister"=>"listerpersonnes"
+                                    ,"consulter"=>"consulterpersonnes"
+                                    ,"id"=>"idpersonnes"
+                                  )
+              )
+                ,"activity"=>"listerpersonnes"
+                ,"form"=>false
+                ,"model"=>array(
+                        "table"=>"personnes"
+                    )
+
+            ),
+            "consulterpersonnes"=>array(
+                "Type"=>"simple"//"AJAX"
+                ,'Role'=>"consulter"
+                ,"view"=>array(
+                              "view"=>true
+                              ,"layout"=>false
+                              ,"pages"=>array(
+                                    "edit"=>"editpersonnes"
+                                    ,"lister"=>"listerpersonnes"
+                                    ,"id"=>"idpersonnes"
+                                  )
+              )
+                ,"activity"=>"consulterpersonnes"
+                ,"form"=>false
+                ,"model"=>array(
+                        "table"=>"personnes"
+                    )
+
+            ),
+            "gestionpersonnes"=>array(
+                "Type"=>"simple"//"AJAX"
+                ,'Role'=>"gestion"
+                ,"view"=>array(
+                        "view"=>true
+                        ,"layout"=>"layout"
+                        ,"pages"=>array(
+                          "edit"=>"editpersonnes"
+                          ,"lister"=>"listerpersonnes"
+                        )
+                    )
+                ,"activity"=>"gestion"
+                ,"form"=>false
+                ,"model"=>array(
+                    "table"=>"personnes"
+                )
+
+            ),
+            "deletepersonnes"=>array(
+                "Type"=>"AJAX"//"AJAX"
+                ,'Role'=>"delete"
+                ,"view"=>array("view"=>false,"layout"=>false)
+                ,"activity"=>"delete"
+                ,"form"=>false
+                ,"model"=>array(
+                    "table"=>"personnes"
+                )
+            ),
+            "savepersonnes"=>array(
+                "Type"=>"AJAX"//"AJAX"
+                ,'Role'=>"save"
+                ,"view"=>array("view"=>false,"layout"=>false)
+                ,"activity"=>"save"
+                ,"form"=>false
+                ,"model"=>array(
+                    "table"=>"personnes"
+                )
+            ),
+             
+        ),
+    )
+    //fin controller personne
+
+            ),
+
+        ),
+      
+    ),
+
+);
