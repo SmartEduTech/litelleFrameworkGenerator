@@ -1,4 +1,7 @@
 <?php
+
+defined('__APP_TMP__') || define('__APP_TMP__', dirname(__FILE__)."/../tmp");
+
 use Generateur\Controller;
 
  
@@ -102,10 +105,9 @@ class Generateur {
     }
 
     public function Modules(){
-        include dirname(__FILE__)."/configgen/TemplateMap.php";
-        include dirname(__FILE__)."/configgen/module.php";
+         include dirname(__FILE__)."/Configgen/module.php";
 
-        $path_app=dirname(__FILE__)."/tmp/".$_APP_CONF["APPNAME"];
+        $path_app=__APP_TMP__."/".$_APP_CONF["APPNAME"];
 
         if (!file_exists($path_app)) {
             mkdir($path_app, 0777);
@@ -178,10 +180,10 @@ class Generateur {
     }
 
     public function Forms(){
-        $Forms= new \generateur\Forms("soutenance");
+     /*   $Forms= new \generateur\Forms("soutenance");
         $Forms->pathFile="../../lib/generateurapp/tmp/gestcomp/modules/referentiel/Forms";
 
-        $Forms->generate($this->DBTable['soutenance']);
+        $Forms->generate($this->DBTable['soutenance']);*/
 
 
 
