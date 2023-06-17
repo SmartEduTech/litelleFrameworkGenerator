@@ -10,6 +10,7 @@
  
 
 use Smartedutech\LitelleFrameworkGenerator\Configgen\TemplateMap;
+use Smartedutech\LitelleFrameworkGenerator\Generateur;
 
 class Controller extends MetaGenerateur
 {
@@ -59,7 +60,7 @@ class Controller extends MetaGenerateur
             $routes=str_ireplace("{Action}",$nameCtrl,$routes);
             $routes=str_ireplace("{activity}",$nameCtrl,$routes);
 
-            \generateur::$Routes[]=$routes;
+            Generateur::$Routes[]=$routes;
             $Table=array();
             if(isset($_Ctrl['model']['table'])){
                 $Table=$this->model[$_Ctrl['model']['table']];

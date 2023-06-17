@@ -1,8 +1,9 @@
 <?php
-
+namespace Smartedutech\LitelleFrameworkGenerator;
 defined('__APP_TMP__') || define('__APP_TMP__', dirname(__FILE__)."/../tmp");
 
-use Generateur\Controller;
+
+use Smartedutech\LitelleFrameworkGenerator\Generateur\Controller;
 
  
 use Smartedutech\LitelleFrameworkGenerator\Configgen\TemplateMap;
@@ -10,10 +11,10 @@ use Smartedutech\LitelleFrameworkGenerator\Configgen\TemplateMap;
 use Smartedutech\LitelleFrameworkGenerator\Generateur\Langues;
 
 
-define('MYSQL_SERVER', 'localhost:3319');
-define('MYSQL_DATABASE_NAME', 'elabreservation');
-define('MYSQL_USERNAME', 'root');
-define('MYSQL_PASSWORD', '');
+defined('MYSQL_SERVER') || define('MYSQL_SERVER', 'localhost:3306');
+defined('MYSQL_DATABASE_NAME') || define('MYSQL_DATABASE_NAME', 'bdname');
+defined('MYSQL_USERNAME') || define('MYSQL_USERNAME', 'root');
+defined('MYSQL_PASSWORD') || define('MYSQL_PASSWORD', '');
 
 
 class Generateur {
@@ -26,7 +27,7 @@ class Generateur {
     public static $Routes;
 	public function __construct()
     {
-       $this->pdo = new PDO(
+       $this->pdo = new \PDO(
 			'mysql:host=' . MYSQL_SERVER . ';dbname=' . MYSQL_DATABASE_NAME,
 			MYSQL_USERNAME,
 			MYSQL_PASSWORD
@@ -40,14 +41,14 @@ class Generateur {
             $tableList = array();
             $result = $this->pdo->query("SHOW TABLES");
 
-            while ($row = $result->fetch(PDO::FETCH_NUM)) {
+            while ($row = $result->fetch(\PDO::FETCH_NUM)) {
                 $tableList[] = $row[0];
 
 
                 $statement = $this->pdo->prepare('DESCRIBE ' . $row[0]);
                 $statement->execute();
                 //Fetch our result.
-                $result2 = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $result2 = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
                 $Tables[$row[0]]['fields']=$result2;
                 $Tables[$row[0]]['Table']=$row[0];
@@ -75,13 +76,13 @@ class Generateur {
                 $statement = $this->pdo->prepare($sql);
                 $statement->execute();
                 //Fetch our result.
-                $result3 = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $result3 = $statement->fetchAll(\PDO::FETCH_ASSOC);
                 $Tables[$row[0]]['Links']=$result3;
 
             }
 
          }
-        catch (PDOException $e) {
+        catch (\PDOException $e) {
             echo $e->getMessage();
         }
         $this->DBTable=$Tables;
@@ -105,10 +106,11 @@ class Generateur {
     }
 
     public function Modules(){
-         include dirname(__FILE__)."/Configgen/module.php";
+        include dirname(__FILE__)."/configgen/TemplateMap.php";
+        include dirname(__FILE__)."/configgen/module.php";
 
         $path_app=__APP_TMP__."/".$_APP_CONF["APPNAME"];
-
+        echo "<b>".$path_app."</b><br>";
         if (!file_exists($path_app)) {
             mkdir($path_app, 0777);
             echo "The directory $path_app was successfully created.<br>";
@@ -116,7 +118,7 @@ class Generateur {
         } else {
             echo "The directory $path_app exists.<br>";
         }
-        $config=dirname(__FILE__)."/tmp/".$_APP_CONF["APPNAME"]."/config";
+        $config=__APP_TMP__."/".$_APP_CONF["APPNAME"]."/config";
         if (!file_exists($config)) {
             mkdir( $config, 0777);
             echo "The directory $config was successfully created.<br>";
@@ -180,11 +182,11 @@ class Generateur {
     }
 
     public function Forms(){
-     /*   $Forms= new \generateur\Forms("soutenance");
+       /* $Forms= new \generateur\Forms("soutenance");
         $Forms->pathFile="../../lib/generateurapp/tmp/gestcomp/modules/referentiel/Forms";
 
-        $Forms->generate($this->DBTable['soutenance']);*/
-
+        $Forms->generate($this->DBTable['soutenance']);
+*/
 
 
     }
